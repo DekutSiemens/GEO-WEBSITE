@@ -1,0 +1,31 @@
+{
+  "title": "Olkaria-WH02-Field-Survey-2026-06-15",
+  "location": "Olkaria, Hell's Gate National Park, Kenya",
+  "sampleType": "Wellhead steam condensate",
+  "collectionDate": "2026-06-15",
+
+  "depth": 1200,
+  "temperature": 285.4,
+  "pH": 6.8,
+  "electricalConductivity": 4200,
+  "geochemistryComment": "Auto-ingested from PLC simulation. Wellhead WH02. Steady-state conditions.",
+
+  "lithology": "Tuffaceous rhyolite with basaltic dikes",
+  "alteration": "Argillic to propylitic alteration zones",
+  "mineralogy": "Quartz, calcite, chlorite, kaolinite, pyrite",
+  "geochimicalAnalysis": "Na-Cl-HCO3 water type, TDS ~3500 mg/L",
+  "texture": "Vesicular, porphyritic",
+  "hydrothermalFeatures": "Fumaroles, hot springs, sinter deposits",
+  "structure": "NE-SW trending normal faults, intersected by N-S transfer faults",
+  "geologyComment": "Active high-temperature volcanic geothermal system",
+
+  "method": "Magnetotellurics (MT) + InSAR",
+  "surveyDate": "2026-06-10",
+  "depthOfPenetrationMeters": 3000,
+  "resolutionsMeters": 100,
+  "measuredParameters": "Electrical resistivity, surface deformation",
+  "recoveredPropertiesOfInterest": "Reservoir geometry, fluid flow pathways",
+  "instrumentUsed": "Phoenix MT system, Sentinel-1 InSAR",
+  "potentialTargets": "Deep brine reservoir at 2-2.5 km depth",
+  "geophysicsComment": "MT inversion shows clay cap at ~800 m, reservoir at 2.2 km"
+}
