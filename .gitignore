@@ -1,0 +1,26 @@
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
+*.env
+
+# Ingestion scripts that contain tokens
+github_ingestion.py
+ingested_files.json
+
+# Node dependencies (huge, shouldn't be in Git)
+node_modules/
+
+# Python virtual environments
+venv/
+__pycache__/
+*.pyc
+
+# Build artifacts
+build/
+dist/
+
+# Editor / OS noise
+.vscode/
+.DS_Store
+Thumbs.db
