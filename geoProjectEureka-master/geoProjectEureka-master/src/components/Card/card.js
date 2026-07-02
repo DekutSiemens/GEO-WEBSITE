@@ -6,7 +6,7 @@ import useDeleteProject from "../../hooks/data/post/useDeleteProject";
 import useAuthentication from "../../hooks/useAuthentication";
 
 
-const Card = ({ mediaFiles, date, title, geology, geochemistry, geophysics, autor, id, datas, role, userId}) => {
+const Card = ({ mediaFiles, date, title, geology, geochemistry, geophysics, autor, id, datas, role, userId, isLiveMonitor}) => {
     const { handleDeleteProject, isLoadingDeleteProject, alertBannerDeleteProject } = useDeleteProject();
     const { getUserInfosFromSessionStorage } = useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
@@ -29,8 +29,16 @@ const Card = ({ mediaFiles, date, title, geology, geochemistry, geophysics, auto
             <div className="bg-light-grey max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl rounded shadow-xl m-4">
                 <Carousel mediaFiles={mediaFiles} />
 
-                <div className={`px-6 py-4`}>
-                    <div className="font-bold text-black text-xl mb-2 truncate">{title} - {date}</div>
+               <div className={`px-6 py-4`}>
+    <div className="font-bold text-black text-xl mb-2 truncate flex items-center">
+        {isLiveMonitor && (
+            <span className="inline-flex items-center px-2 py-0.5 mr-2 rounded-full text-xs font-semibold bg-red-100 text-red-800">
+                <span className="w-2 h-2 rounded-full bg-red-500 mr-1 animate-pulse"></span>
+                LIVE
+            </span>
+        )}
+        <span className="truncate">{title} - {date}</span>
+    </div>
                     <p className="text-gray-700 text-base line-clamp-3">
                         <span className="font-bold underline">Geology :</span><br />
                         {geology}

@@ -30,6 +30,32 @@ const dataSchema = new mongoose.Schema({
     instrumentUsed: { type: String },
     potentialTargets: { type: String },
     geophysicsComment: { type: String },
+    isLiveMonitor: {
+  type: Boolean,
+  default: false,
+  index: true,
+},
+
+dayKey: {
+  type: String,
+  index: true,
+},
+
+sensorDevices: [
+  {
+    device_id: { type: String, required: true },
+    location: { type: String },
+    first_seen: { type: Date, default: Date.now },
+    last_seen:  { type: Date, default: Date.now },
+    readings: [
+      {
+        timestamp:   { type: Date, required: true },
+        temperature: { type: Number },
+        humidity:    { type: Number },
+      }
+    ],
+  }
+],
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     author: { type: String, requires: true }
 });

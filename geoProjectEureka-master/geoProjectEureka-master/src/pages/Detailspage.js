@@ -4,6 +4,7 @@ import useGetProject from "../hooks/data/get/useGetProjects";
 import Footer from "../components/Footer/footer";
 import Carousel from "../components/Carousel/carousel";
 import axios from "axios";
+import LiveSensorTables from "../components/LiveSensorTables";
 
 const DetailsPage = () => {
     const location = useLocation();
@@ -70,7 +71,7 @@ const DetailsPage = () => {
             fileReader.onerror = (error) => reject(error);
         });
     };
-
+    console.log("DETAIL DATA:", data);
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
     if (!data) return <div>No data available</div>;
@@ -85,6 +86,28 @@ const DetailsPage = () => {
             </h2>
 
             <div className="container mx-auto py-6 space-y-6">
+                {/* ============================================================
+                    LIVE SENSOR MONITOR — only shown for daily live-monitor
+                    projects (isLiveMonitor=true). Sits at the top of the page
+                    so it's the first thing visible for sensor projects.
+                    ============================================================ */}
+                {data.isLiveMonitor && (
+                    <div className="bg-white rounded-lg shadow p-6 mb-6">
+                        <h4 className="text-xl font-medium text-black-800 flex items-center justify-center mb-4">
+                            📡 Live Sensor Tables
+                        </h4>
+                        <LiveSensorTables
+                            project={{
+                                _id: data._id || itemId,
+                                dayKey: data.dayKey,
+                                sensorDevices: data.sensorDevices || [],
+                                isLiveMonitor: true,
+                            }}
+                            autoRefresh={true}
+                        />
+                    </div>
+                )}
+
                 <div className="flex flex-col md:flex-row md:space-x-6 mb-6">
                     <div className="w-full md:w-1/2 bg-white rounded-lg shadow p-6">
                         <h4 className="text-xl font-medium text-black-800 flex items-center justify-center mb-4">Media</h4>

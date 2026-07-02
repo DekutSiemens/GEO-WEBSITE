@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const path = require('path');
+const monitorRoutes = require('./routes/monitorRoutes');
 
 // Load env variables
 dotenv.config();
@@ -11,6 +12,7 @@ const app = express();
 app.use(express.json());
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 const allowedOrigins = ['http://localhost:5102'];
 app.use(cors({
@@ -35,6 +37,7 @@ const dataRoutes = require('./routes/dataRoutes');
 
 app.use(`${baseUrl}/auth`, authRoutes);
 app.use(`${baseUrl}/data`, dataRoutes);
+app.use(`${baseUrl}/monitor`, monitorRoutes);
 
 const predictionRoutes = require('./routes/predictionRoutes');
 app.use(`${baseUrl}/predictions`, predictionRoutes);

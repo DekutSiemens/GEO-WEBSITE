@@ -209,6 +209,10 @@ exports.getData = async (req, res) => {
                 geochemistry: item.geochemistryComment,
                 geophysics: item.geophysicsComment,
                 userId: item.userId,
+                // Live sensor monitor fields (only populated for daily live-monitor projects)
+                isLiveMonitor: item.isLiveMonitor || false,
+                dayKey: item.dayKey || null,
+                sensorDevices: item.sensorDevices || [],
                 datas:{
                     location: item.location,
                     sampleType: item.sampleType,
@@ -295,6 +299,7 @@ exports.getOneProject = async (req, res) => {
         
         dataToSend = {
                 id: data.dataId,
+                _id: data._id,   // needed so frontend auto-refresh can re-fetch by id
                 title: data.title,
                 date: new Date(data.collectionDate).toLocaleDateString('fr-FR'),
                 autor: data.author,
@@ -303,6 +308,10 @@ exports.getOneProject = async (req, res) => {
                 geochemistry: data.geochemistryComment,
                 geophysics: data.geophysicsComment,
                 userId: data.userId,
+                // Live sensor monitor fields (only populated for daily live-monitor projects)
+                isLiveMonitor: data.isLiveMonitor || false,
+                dayKey: data.dayKey || null,
+                sensorDevices: data.sensorDevices || [],
                 datas:{
                     location: data.location,
                     sampleType: data.sampleType,
