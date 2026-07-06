@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const path = require('path');
 const monitorRoutes = require('./routes/monitorRoutes');
+const aiRoutes = require('./routes/aiRoutes');
 
 // Load env variables
 dotenv.config();
@@ -38,6 +39,7 @@ const dataRoutes = require('./routes/dataRoutes');
 app.use(`${baseUrl}/auth`, authRoutes);
 app.use(`${baseUrl}/data`, dataRoutes);
 app.use(`${baseUrl}/monitor`, monitorRoutes);
+app.use(`${baseUrl}/ai`, aiRoutes);
 
 const predictionRoutes = require('./routes/predictionRoutes');
 app.use(`${baseUrl}/predictions`, predictionRoutes);
